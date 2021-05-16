@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  padding: 20px;
+  color: white;
+}
+
+.App-header__intro a,
+.App-header__intro a:hover,
+.App-header__intro a:focus,
+.App-header__intro a:visited {
+  color: #61dafb;
+}
+
+.App-box {
+  display: inline-block;
+  border: 1px solid #cacaca;
+  padding: 15px;
+}
+
+.App-wrapper {
+  padding: 30px;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=768, initial-scale=1.0" />
+    <title>Selleo Ad. 3</title>
+  </head>
+  <body>
+    <h1>Search color:</h1>
+    <input
+      type="search"
+      class="search"
+      value="Search color"
+      onkeyup="showColors()"
+      onclick="showColors()"
+      onchange="showColors()"
+    />
+    <button onclick="clearInput(this)">Clear searchbox</button>
+    <ul class="colors"></ul>
+    <script>
+      const colors = [
+        'red',
+        'blue',
+        'white',
+        'black',
+        'orange',
+        'gray',
+        'green',
+        'yellow',
+        'purple',
+        'pink',
+      ];
+
+      function searchingFor(searchColor) {
+        return function (color) {
+          return (
+            color.toLowerCase().includes(searchColor.toLowerCase()) ||
+            !searchColor
+          );
+        };
+      }
+
+      function clearInput(element) {
+        document.querySelector('.search').value = '';
+        showColors();
+      }
+
+      function changeColor(element) {
+        element.style.backgroundColor = 'green';
+      }
+
+      function showColors() {
+        const searchColor = document.querySelector('.search').value;
+        let list = `<ul></ul>`;
+        if (searchColor.length === 0 || searchColor === 'Search color') {
+          colors.map(
+            (color) =>
+              (list += `
+      <li style="background-color:${color}" onclick="changeColor(this)">
+        <p>${color}</p>
+      </li>`)
+          );
+        } else {
+          colors.filter(searchingFor(searchColor)).map((color) => {
+            list += `
+      <li style="background-color:${color}" onclick="changeColor(this)">
+        <p>${color}</p>
+      </li>`;
+            document.title = color;
+          });
+        }
+        document.querySelector('.colors').innerHTML = list;
+      }
+      showColors();
+    </script>
+  </body>
+</html>

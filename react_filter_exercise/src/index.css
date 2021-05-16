@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  padding: 20px;
+  color: white;
+}
+
+.App-header__intro a,
+.App-header__intro a:hover,
+.App-header__intro a:focus,
+.App-header__intro a:visited {
+  color: #61dafb;
+}
+
+.App-box {
+  max-width: 500px;
+  margin: auto;
+  border: 1px solid #cacaca;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.App-box input {
+  padding: 0;
+  font-size: 16px;
+  border: 0;
+  outline: none;
+  text-align: center;
+}
+
+.App-wrapper {
+  padding: 30px;
+}

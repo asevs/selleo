@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=768, initial-scale=1.0" />
+    <title>Selleo ad. 1</title>
+  </head>
+  <body>
+    <h1 class="editable">Editable text:</h1>
+    <script type="text/javascript">
+      function eventHandler(e) {
+        e.preventDefault();
+        editText(this);
+      }
+
+      document
+        .querySelector('.editable')
+        .addEventListener('click', eventHandler);
+
+      function editText(element) {
+        let input = document.createElement('INPUT');
+        input.value = element.innerText;
+        element.innerHTML = '';
+        element.removeEventListener('click', eventHandler);
+        element.append(input);
+        input.addEventListener('focusout', () => finishEditText(element));
+        input.addEventListener('keypress', function (e) {
+          if (e.key === 'Enter') {
+            finishEditText(element);
+          }
+        });
+      }
+
+      function finishEditText(element) {
+        const text = element.querySelector('input').value;
+        element.innerHTML = '<h1>' + text + '</h1>';
+        element.addEventListener('click', eventHandler);
+      }
+    </script>
+  </body>
+</html>
