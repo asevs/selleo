@@ -3,6 +3,7 @@ import { Row, Col, Button } from 'reactstrap';
 import { Field } from 'redux-form';
 import _capitalize from 'lodash/capitalize';
 import TimePickerWrapper from './TimePickerWrapper';
+import SelectOwnerWrapper from './SelectOwnerWrapper';
 
 const SingleDayReservations = ({ users, fields, meta: { error } }) => {
   return [
@@ -21,17 +22,14 @@ const SingleDayReservations = ({ users, fields, meta: { error } }) => {
           <Col xs={{ size: 3, offset: 1 }}>
             <Field name={`${name}.end`} component={TimePickerWrapper} />
           </Col>
-          <Col xs={{ size: 3, offset: 5 }}>
-            <Field name={`${name}.ownerId`} component="select">
-              <option>{'Set owner'}</option>
-              {users.map((user) => (
-                <option value={user.id}>
-                  {user.firstName + ' ' + user.lastName}
-                </option>
-              ))}
-            </Field>
+          <Col xs={{ size: 3, offset: 1 }}>
+            <Field
+              users={users}
+              name={`${name}.owner`}
+              component={SelectOwnerWrapper}
+            />
           </Col>
-          <Col xs={{ size: 1, offset: 1 }}>
+          <Col xs={{ size: 1, offset: 6 }}>
             <Button
               onClick={() => {
                 fields.remove(index);
@@ -49,7 +47,7 @@ const SingleDayReservations = ({ users, fields, meta: { error } }) => {
       <Col xs={{ size: 3, offset: 6 }}>
         <Button
           onClick={() => {
-            fields.push({ start: null, end: null, ownerId: null });
+            fields.push({ start: null, end: null, owner: null });
           }}
           color="warning"
           className="reservations__clear-btn"
